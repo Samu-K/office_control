@@ -58,4 +58,3 @@ def gesture_wake_up():
 def gesture_detection():
     # looks for certain gestures
     pass
-
