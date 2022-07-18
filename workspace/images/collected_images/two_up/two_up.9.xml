@@ -1,0 +1,26 @@
+<annotation>
+	<folder>two_up</folder>
+	<filename>two_up.9.jpg</filename>
+	<path>/Users/SamuK/Documents/Coding/Home office control/workspace/images/collected_images/two_up/two_up.9.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>720</width>
+		<height>360</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>two_up</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>133</xmin>
+			<ymin>52</ymin>
+			<xmax>367</xmax>
+			<ymax>312</ymax>
+		</bndbox>
+	</object>
+</annotation>
