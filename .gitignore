@@ -3,4 +3,4 @@ labelImg/
 centernet_mobilenetv2_fpn_od/
 tensorflow/models/
 io/
-.DS_Store
+tensorflow/scripts/
