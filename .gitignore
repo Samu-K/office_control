@@ -1,6 +1,5 @@
 office_control/
-labelImg/
-centernet_mobilenetv2_fpn_od/
+ssd_mobilenet_v2_320x320_coco17_tpu-8/
 tensorflow/models/
-io/
-tensorflow/scripts/
+tensorflow/workspace/scripts/
+nvvm/
