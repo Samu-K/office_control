@@ -20,10 +20,10 @@ cv.imshow("Frame",frame)
 for label in labels:
     print(f"Handling {label}")
     for img_num in range(number_imgs):
-        print(f"Handling num {img_num} of 10")
+        print(f"Handling num {img_num+1} of 10")
         
         print("Taking on 5")
-        for num in range(1,5):
+        for num in range(1,6):
             print(num)
             time.sleep(1)
         
