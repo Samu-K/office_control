@@ -1,0 +1,26 @@
+<annotation>
+	<folder>two_up</folder>
+	<filename>two_up.6.jpg</filename>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\two_up\two_up.6.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1080</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>two_up</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>383</xmin>
+			<ymin>289</ymin>
+			<xmax>631</xmax>
+			<ymax>539</ymax>
+		</bndbox>
+	</object>
+</annotation>

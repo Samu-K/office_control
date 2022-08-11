@@ -10,21 +10,28 @@ import time
 
 labels = ["stop", "two_up", "two_down","fist"]
 number_imgs = 10
+cap = cv.VideoCapture(0)
+
+print("Starting up")
+ret, frame = cap.read()
+frame = cv.resize(frame,(1080,720))
+cv.imshow("Frame",frame)
 
 for label in labels:
-    cap = cv.VideoCapture(0)
     print(f"Handling {label}")
-    
-    time.sleep(5)
-    
     for img_num in range(number_imgs):
         print(f"Handling num {img_num} of 10")
         
+        print("Taking on 5")
+        for num in range(1,5):
+            print(num)
+            time.sleep(1)
+        
         ret, frame = cap.read()
-        frame = cv.resize(frame,(720,360))
+        frame = cv.resize(frame,(1080,720))
         
         img_name = os.path.join(
-            "workspace/images/collected_images",
+            "tensorflow/workspace/images/collected_images",
             label,
             f"{label}.{img_num}.jpg")
         
