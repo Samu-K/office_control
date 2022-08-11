@@ -1,13 +1,13 @@
 <annotation>
 	<folder>two_up</folder>
 	<filename>two_up.9.jpg</filename>
-	<path>/Users/SamuK/Documents/Coding/Home office control/workspace/images/collected_images/two_up/two_up.9.jpg</path>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\two_up\two_up.9.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>720</width>
-		<height>360</height>
+		<width>1080</width>
+		<height>720</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>133</xmin>
-			<ymin>52</ymin>
-			<xmax>367</xmax>
-			<ymax>312</ymax>
+			<xmin>444</xmin>
+			<ymin>211</ymin>
+			<xmax>846</xmax>
+			<ymax>607</ymax>
 		</bndbox>
 	</object>
 </annotation>

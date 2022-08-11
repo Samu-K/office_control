@@ -1,26 +1,26 @@
 <annotation>
 	<folder>stop</folder>
 	<filename>stop.4.jpg</filename>
-	<path>/Users/SamuK/Documents/Coding/Home office control/workspace/images/collected_images/stop/stop.4.jpg</path>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\stop\stop.4.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>720</width>
-		<height>360</height>
+		<width>1080</width>
+		<height>720</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
 	<object>
 		<name>stop</name>
 		<pose>Unspecified</pose>
-		<truncated>0</truncated>
+		<truncated>1</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>261</xmin>
-			<ymin>48</ymin>
-			<xmax>446</xmax>
-			<ymax>288</ymax>
+			<xmin>806</xmin>
+			<ymin>239</ymin>
+			<xmax>1080</xmax>
+			<ymax>576</ymax>
 		</bndbox>
 	</object>
 </annotation>

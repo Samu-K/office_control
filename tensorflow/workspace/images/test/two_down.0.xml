@@ -1,0 +1,26 @@
+<annotation>
+	<folder>two_down</folder>
+	<filename>two_down.0.jpg</filename>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\two_down\two_down.0.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1080</width>
+		<height>720</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>two_down</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>349</xmin>
+			<ymin>286</ymin>
+			<xmax>729</xmax>
+			<ymax>641</ymax>
+		</bndbox>
+	</object>
+</annotation>

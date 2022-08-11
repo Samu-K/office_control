@@ -1,13 +1,13 @@
 <annotation>
 	<folder>fist</folder>
 	<filename>fist.1.jpg</filename>
-	<path>/Users/SamuK/Documents/Coding/Home office control/workspace/images/collected_images/fist/fist.1.jpg</path>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\fist\fist.1.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>720</width>
-		<height>360</height>
+		<width>1080</width>
+		<height>720</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>204</xmin>
-			<ymin>120</ymin>
-			<xmax>351</xmax>
-			<ymax>215</ymax>
+			<xmin>440</xmin>
+			<ymin>224</ymin>
+			<xmax>679</xmax>
+			<ymax>424</ymax>
 		</bndbox>
 	</object>
 </annotation>

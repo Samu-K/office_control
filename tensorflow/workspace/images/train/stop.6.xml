@@ -1,13 +1,13 @@
 <annotation>
 	<folder>stop</folder>
 	<filename>stop.6.jpg</filename>
-	<path>/Users/SamuK/Documents/Coding/Home office control/workspace/images/collected_images/stop/stop.6.jpg</path>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\stop\stop.6.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
 	<size>
-		<width>720</width>
-		<height>360</height>
+		<width>1080</width>
+		<height>720</height>
 		<depth>3</depth>
 	</size>
 	<segmented>0</segmented>
@@ -17,10 +17,10 @@
 		<truncated>0</truncated>
 		<difficult>0</difficult>
 		<bndbox>
-			<xmin>257</xmin>
-			<ymin>61</ymin>
-			<xmax>439</xmax>
-			<ymax>324</ymax>
+			<xmin>389</xmin>
+			<ymin>132</ymin>
+			<xmax>767</xmax>
+			<ymax>643</ymax>
 		</bndbox>
 	</object>
 </annotation>
