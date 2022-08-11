@@ -3,7 +3,8 @@ from cProfile import label
 import os
 import cv2 as cv
 import numpy as np
-import tensorflow.compat.v2 as tf
+import tensorflow as tf
+
 from object_detection.utils import label_map_util, visualization_utils, config_util
 from object_detection.builders import model_builder
 
@@ -14,7 +15,9 @@ model = model_builder.build(model_config=configs["model"],is_training=False)
 
 # ckpt
 ckpt = tf.compat.v2.train.Checkpoint(model=model)
-ckpt.restore("tensorflow/workspace/models/cmod/ckpt-3").expect_partial()
+
+ckpt.restore("tensorflow/workspace/models/cmod/ckpt-4").expect_partial()
+
 
 # setup function for detection
 def detect(image):
@@ -29,7 +32,7 @@ category_index = label_map_util.create_category_index_from_labelmap("tensorflow/
 cap = cv.VideoCapture(0)
 
 # setup loop to go through frames
-while True:
+while cap.isOpened():
     # read frame
     ret, frame = cap.read()
     image_np = np.array(frame)
@@ -59,7 +62,8 @@ while True:
     
     cv.imshow("object_detection", cv.resize(image_np_with_detections,(800,600)))
     
-    if cv.waitKey(0) == ord("q"):
+    wk = cv.waitKey(0)
+    if wk == ord("q"):
         cap.release()
         cv.destroyAllWindows()
         break
