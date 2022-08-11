@@ -59,7 +59,8 @@ while cap.isOpened():
     
     cv.imshow("object_detection", cv.resize(image_np_with_detections,(800,600)))
     
-    if cv.waitKey(0) == ord("q"):
+    wk = cv.waitKey(0)
+    if wk == ord("q"):
         cap.release()
         cv.destroyAllWindows()
         break
