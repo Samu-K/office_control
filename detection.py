@@ -4,6 +4,7 @@ import os
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
+
 from object_detection.utils import label_map_util, visualization_utils, config_util
 from object_detection.builders import model_builder
 
@@ -14,7 +15,9 @@ model = model_builder.build(model_config=configs["model"],is_training=False)
 
 # ckpt
 ckpt = tf.compat.v2.train.Checkpoint(model=model)
+
 ckpt.restore("tensorflow/workspace/models/cmod/ckpt-4").expect_partial()
+
 
 # setup function for detection
 def detect(image):
