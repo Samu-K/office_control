@@ -1,6 +1,5 @@
 # imports
 from cProfile import label
-import os
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
@@ -62,8 +61,8 @@ while cap.isOpened():
     
     cv.imshow("object_detection", cv.resize(image_np_with_detections,(800,600)))
     
-    wk = cv.waitKey(0)
-    if wk == ord("q"):
+    wk = cv.waitKey(1)
+    if wk & 0xFF == ord("q"):
         cap.release()
         cv.destroyAllWindows()
         break
