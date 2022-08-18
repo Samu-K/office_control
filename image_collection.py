@@ -8,8 +8,9 @@ import uuid
 import os
 import time
 
-labels = ["fist"]
-number_imgs = 20
+labels = ["Samu"]
+number_imgs = 40
+dl = 2
 cap = cv.VideoCapture(0)
 
 print("Starting up")
@@ -24,17 +25,16 @@ for label in labels:
     
     print(f"Handling {label}")
     for img_num in range(number_imgs):
-        print(f"Handling num {img_num+1} of 10")
-        
-        print("Taking on 3")
-        for num in range(1,4):
+        print(f"Handling num {img_num+41} of {number_imgs+40}")
+        print(f"Taking on {dl}")
+        for num in range(1,dl+1):
             print(num)
             time.sleep(1)
         ret, frame = cap.read()
         img_name = os.path.join(
             "tensorflow/workspace/images/collected_images",
             label,
-            f"{label}_{img_num}.jpg")
+            f"{label}_{img_num+40}.jpg")
         
         cv.imwrite(img_name,frame)
         cv.imshow('Frame',frame)

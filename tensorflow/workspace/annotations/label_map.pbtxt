@@ -6,3 +6,11 @@ item {
     name: "fist"
     id:2
 }
+item {
+    name: "Samu"
+    id:3
+}
+item {
+    name: "Isse"
+    id:4
+}
