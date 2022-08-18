@@ -8,15 +8,20 @@ import uuid
 import os
 import time
 
-labels = ["stop"]
-number_imgs = 10
+labels = ["fist"]
+number_imgs = 20
 cap = cv.VideoCapture(0)
 
 print("Starting up")
 ret, frame = cap.read()
 cv.imshow("Frame",frame)
+fp = "tensorflow/workspace/images/collected_images"
 
 for label in labels:
+    label_path = os.path.join(fp,label)
+    if os.path.exists(label_path) == False:
+        os.mkdir(label_path)
+    
     print(f"Handling {label}")
     for img_num in range(number_imgs):
         print(f"Handling num {img_num+1} of 10")

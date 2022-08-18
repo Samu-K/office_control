@@ -2,3 +2,7 @@ item {
     name: "stop"
     id:1
 }
+item {
+    name: "fist"
+    id:2
+}

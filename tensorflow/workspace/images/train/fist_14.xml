@@ -1,0 +1,26 @@
+<annotation>
+	<folder>fist</folder>
+	<filename>fist_14.jpg</filename>
+	<path>D:\Coding\office_control\tensorflow\workspace\images\collected_images\fist\fist_14.jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>640</width>
+		<height>480</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>fist</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>372</xmin>
+			<ymin>321</ymin>
+			<xmax>508</xmax>
+			<ymax>449</ymax>
+		</bndbox>
+	</object>
+</annotation>

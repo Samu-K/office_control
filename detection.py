@@ -15,7 +15,7 @@ model = model_builder.build(model_config=configs["model"],is_training=False)
 # ckpt
 ckpt = tf.compat.v2.train.Checkpoint(model=model)
 
-ckpt.restore("tensorflow/workspace/models/cmod/ckpt-4").expect_partial()
+ckpt.restore("tensorflow/workspace/models/cmod/ckpt-6").expect_partial()
 
 
 # setup function for detection
