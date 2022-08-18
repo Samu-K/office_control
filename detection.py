@@ -1,12 +1,14 @@
 # imports
 from cProfile import label
+from re import A
 import cv2 as cv
 import numpy as np
 import tensorflow as tf
-
+import os
+import time
 from object_detection.utils import label_map_util, visualization_utils, config_util
 from object_detection.builders import model_builder
-
+import subprocess
 
 # load pipeline config to build model
 configs = config_util.get_configs_from_pipeline_file("tensorflow/workspace/models/cmod/pipeline.config")
@@ -29,9 +31,15 @@ def detect(image):
 category_index = label_map_util.create_category_index_from_labelmap("tensorflow/workspace/annotations/label_map.pbtxt")
 
 cap = cv.VideoCapture(0)
-
+away_counter = 0
+stop_counter = 0
+stopped = False
+label_id_offset = 1
+    
 # setup loop to go through frames
 while cap.isOpened():
+    away_frame = False
+    
     # read frame
     ret, frame = cap.read()
     image_np = np.array(frame)
@@ -43,9 +51,20 @@ while cap.isOpened():
     detections = {key: value[0,:num_detections].numpy() for key, value in detections.items()}
     
     detections["detection_classes"] = detections["detection_classes"].astype(np.int64)
-    
-    label_id_offset = 1
     image_np_with_detections = image_np.copy()
+    
+    all_detections = []
+    for index, value in enumerate(detections["detection_classes"]+label_id_offset):
+        if detections["detection_scores"][index] > 0.8:
+            all_detections.append(category_index[value]["name"])
+        
+    if "stop" in all_detections:
+        stop_counter += 1
+        
+    if not stopped:
+        if ("Samu" or "Isse") not in all_detections:
+            away_counter += 1
+            away_frame = True
     
     visualization_utils.visualize_boxes_and_labels_on_image_array(
         image_np_with_detections,
@@ -60,6 +79,23 @@ while cap.isOpened():
     )
     
     cv.imshow("object_detection", cv.resize(image_np_with_detections,(800,600)))
+
+    if away_frame == False:
+        pass
+        away_counter = 0
+    elif away_counter >= 20:
+        print("Shutting down")
+        subprocess.run(["psshutdown64.exe -d -t 0"])
+
+    if stop_counter >= 10:
+        if not stopped:
+            stopped = True
+            print("Program stopped")
+        else:
+            stopped = False
+            print("Program continued")
+        time.sleep(1)
+        stop_counter = 0
     
     wk = cv.waitKey(1)
     if wk & 0xFF == ord("q"):
