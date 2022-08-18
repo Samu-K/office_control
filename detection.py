@@ -15,7 +15,7 @@ model = model_builder.build(model_config=configs["model"],is_training=False)
 # ckpt
 ckpt = tf.compat.v2.train.Checkpoint(model=model)
 
-ckpt.restore("tensorflow/workspace/models/cmod/ckpt-6").expect_partial()
+ckpt.restore("tensorflow/workspace/models/cmod/ckpt-7").expect_partial()
 
 
 # setup function for detection
@@ -54,8 +54,8 @@ while cap.isOpened():
         detections["detection_scores"],
         category_index,
         use_normalized_coordinates=True,
-        max_boxes_to_draw=2,
-        min_score_thresh=.8,
+        max_boxes_to_draw=5,
+        min_score_thresh=.7,
         agnostic_mode=False
     )
     
