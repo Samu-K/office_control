@@ -1,6 +1,5 @@
-office_control/
-ssd_mobilenet_v2_320x320_coco17_tpu-8/
+promod/
 tensorflow/models/
-tensorflow/workspace/scripts/
 nvvm/
 LabelImg/
+hue_key.txt
