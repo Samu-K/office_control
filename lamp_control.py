@@ -38,7 +38,7 @@ class Lamp():
         Args:
             level (float): level of brightness 0-100
         """
-        if 0 < level < 100:
+        if (level < 0) or (level > 100):
             raise ValueError("Input should be within 0-100")
         
         # Send put request to lamp
