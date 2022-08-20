@@ -1,4 +1,5 @@
 # import object detection libraries
+from concurrent.futures import thread
 import cv2 as cv
 import tensorflow as tf
 from object_detection.utils import label_map_util, visualization_utils, config_util
@@ -9,6 +10,7 @@ import numpy as np
 import os
 import time
 from datetime import datetime
+from win10toast import ToastNotifier
 
 # import in custom class for lamp control
 from lamp_control import Lamp
@@ -54,10 +56,23 @@ def det_brightness(current_time) -> float:
 # Setup variables
 away_counter = 0
 stop_counter = 0
+fist_counter = 0
 label_id_offset = 1
 shut_down = False
 stopped = False
 lamp_state = False
+
+# setup notification
+toast = ToastNotifier()
+
+# show notification of program starting
+toast.show_toast(
+    "Detection",
+    f"Program started",
+    duration=5,
+    icon_path="icon.ico",
+    threaded=True
+)
 
 # load pipeline config and build model
 configs = config_util.get_configs_from_pipeline_file("tensorflow/workspace/models/cmod/pipeline.config")
@@ -92,6 +107,9 @@ cap = cv.VideoCapture(0)
 while cap.isOpened():
     # away detection is reset at beginning of loop
     away_frame = False
+    # same for others
+    stop_frame = False
+    fist_frame = False
     
     # read frame
     ret, frame = cap.read()
@@ -108,7 +126,6 @@ while cap.isOpened():
     
     # convert classe to int64
     detections["detection_classes"] = detections["detection_classes"].astype(np.int64)
-    image_np_with_detections = image_np.copy()
     
     # setup a list to contain all detected classes
     all_detections = []
@@ -122,6 +139,11 @@ while cap.isOpened():
     # check to see if stop is detected
     if "stop" in all_detections:
         stop_counter += 1
+        stop_frame = True
+    
+    if "fist" in all_detections:
+        fist_counter += 1
+        fist_frame = True
     
     # make sure presence detection is not stopped
     if not stopped:
@@ -131,7 +153,9 @@ while cap.isOpened():
             away_counter += 1
             # mak current frame absent
             away_frame = True
-    
+
+    image_np_with_detections = image_np.copy()
+        
     # visualize detections
     visualization_utils.visualize_boxes_and_labels_on_image_array(
         image_np_with_detections,
@@ -147,7 +171,7 @@ while cap.isOpened():
     
     # show the final image
     cv.imshow("object_detection", cv.resize(image_np_with_detections,(800,600)))
-
+    
     # check if current frame absent
     if away_frame == False:
         # if so we reset the counter
@@ -158,19 +182,56 @@ while cap.isOpened():
         shut_down = True
         break
     
-    # check to see if stop has been held for long enough
-    if stop_counter >= 3:
-        # flip the state of stopped
-        if not stopped:
-            stopped = True
-            print("Program stopped")
-        else:
-            stopped = False
-            print("Program continued")
-        # reset our counter
-        time.sleep(1)
-        stop_counter = 0
+    if stop_frame:
+        # check to see if stop has been held for long enough
+        if stop_counter >= 3:
+            # flip the state of stopped
+            if not stopped:
+                stopped = True
+                print("Program stopped")
+                # show notification
+                toast.show_toast(
+                    "Detection",
+                    f"Program paused",
+                    duration=5,
+                    icon_path="icon.ico",
+                    threaded=True
+                )
+
+            else:
+                stopped = False
+                print("Program continued")
+                # show notification
+                toast.show_toast(
+                    "Detection",
+                    f"Program continued",
+                    duration=5,
+                    icon_path="icon.ico",
+                    threaded=True
+                )
+                
+            # reset our counter
+            time.sleep(1)
+            stop_counter = 0
+    else:
+        stop_counter=0
     
+    if fist_frame:
+        if fist_counter >= 6:
+            # stop the program fully
+            print("Stopping execution")
+            # show notification
+            toast.show_toast(
+                "Detection",
+                f"Program stopped",
+                duration=5,
+                icon_path="icon.ico",
+                threaded=True
+            )
+            break
+    else:
+        fist_counter = 0
+
     # setup waitkey for opencv
     wk = cv.waitKey(1)
     
